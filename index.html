@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Code Quiz</title>
 </head>
+
 <body>
-    
+    <header class="header">
+        <div class="timer">Timer: 0</div>
+        <div class="score"><a href="#high-score">View High Score</a></div>
+    </header>
+
+    <section class="border">
+        <!--Start game-->
+        <section class="intro">
+            <div class="title">Coding Quiz Challenge</div>
+            <div class="instructions">Try to answer the following code-related questions within the time limit.<br> Keep in mind that incorrect answers will penalize your score/time by ten seconds!</div>
+            <button class="start-btn">Start Quiz!</button>
+        </section>
+
+        <!--Questions-->
+        <section>
+            <div class="questions"></div>
+            <div class="option-list"></div>
+            <div class="result"></div>
+        </section>
+    </section>
+
+
 </body>
 </html>
