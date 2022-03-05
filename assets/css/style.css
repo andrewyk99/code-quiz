@@ -28,17 +28,16 @@
 .border {
     margin: 50px;
     padding: 50px 330px 0px;
+    align-items: center;
+    text-align: center;
 }
 
 /* Intro page styling */
-.intro {
-   text-align: center;
-}
-
 .title {
     font-size: 40px;
     font-weight: bold;
     padding-bottom: 25px;
+    text-align: center;
 }
 
 .instructions {
@@ -56,6 +55,7 @@
     display: inline-block;
     font-size: 20px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .start-btn:hover {
