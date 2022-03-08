@@ -42,7 +42,6 @@ var question4 = {
 var questionList = [question0, question1, question2, question3, question4];
 var questionNumb = 0;
 
-
 // intro
 var intro = function() {
     // resets functions for replayibility
@@ -95,11 +94,13 @@ var startBtn = function() {
 // lists questions and answer choices
 var questions = function() {
     borderEl.innerHTML = "";
+    // creates HTML to show question
     var questionEl = document.createElement("div");
     questionEl.className = "title";
     borderEl.appendChild(questionEl);
     questionEl.textContent = questionList[questionNumb].question;
 
+    // creates a list of answer choices
     var answerChoicesEl = document.createElement("ol");
     answerChoicesEl.className = "answer-list"
     borderEl.appendChild(answerChoicesEl);
@@ -109,9 +110,7 @@ var questions = function() {
         answerChoiceEl.textContent = questionList[questionNumb].answers[i];
         answerChoicesEl.appendChild(answerChoiceEl);
     }
-
     questionList[questionNumb].question.className = "title";
-
     var resultEl = document.createElement("div");
 }
 
@@ -122,15 +121,15 @@ var results = function(event) {
     }
     else {
         resultsEl.textContent = "Wrong!";
-        timer = timer - 10;
+        timer = timer - 10; // penalizes player by 10 seconds if they get the answer wrong
     }
 
     if (questionNumb < 4) {
-        questionNumb = questionNumb + 1;
+        questionNumb = questionNumb + 1; // cycles to the next question
         questions();
     }
     else {
-        timerFlag = 1;
+        timerFlag = 1; // after all questions have been answered, this runs function to the result page
         resultPage();
     }
 }
@@ -148,30 +147,35 @@ var resultPage = function() {
     if (score < 0) {
         score = 0
     }
+    // once game has ended, either by going through all questions or timer goes to 0
     var finalScoreEl = document.createElement("div");
     finalScoreEl.textContent = "Your final score is " + score + "!";
     finalScoreEl.className = "info"
     borderEl.appendChild(finalScoreEl);
 
+    // creates input box to allow user to type their initials
     var initialsEl = document.createElement("form");
     initialsEl.innerHTML = "Enter Initial: <input type='text' name='score-name'/> <button class='submit btn' type='submit'>Submit</button>";
     initialsEl.className = "enterInitial"
     borderEl.appendChild(initialsEl);
 };
 
+// function to save user's score
 var saveScore = function(event) {
     event.preventDefault();
     var initial = document.querySelector("input[name='score-name']").value;
-    if (!initial) {
+    if (!initial) { // prevents user from leaving text box blank
         alert("You need to enter a valid initial!")
         return false;
     }
 
+    // creates object for localStorage
     var highScores = {
         initial: initial,
         score: timer
     };
 
+    // adjusts leaderboard depending on the score from user
     for (var i = 0; i < 5; i++) {
         if (highScores.score > loadedHighScores[i].score) {
             loadedHighScores.splice(i, 0, highScores);
@@ -182,6 +186,7 @@ var saveScore = function(event) {
         }
     }
 
+    // localStorage so user's scores are saved even if webpage is refreshed
     localStorage.setItem("highScores", JSON.stringify(loadedHighScores));
     highScore();
 };
@@ -189,15 +194,19 @@ var saveScore = function(event) {
 
 // View High Score is clicked or submit button at end of game
 var highScore = function() {
+    // resets timer if user played and clears page
     timer = 0;
     timerEl.innerHTML = "Timer: " + timer;
     borderEl.innerHTML = "";
     resultsEl.innerHTML = "";
+
+    // creates title to let user know what page they are looking at
     var highScoreTitle = document.createElement("div");
     highScoreTitle.textContent = "High Scores";
     highScoreTitle.className = "title";
     borderEl.appendChild(highScoreTitle);
     
+    // creates list to show user's score and how well they did to previous plays
     var highScoreListEl = document.createElement("ol");
     highScoreListEl.className = "leaderboard-table"
     borderEl.appendChild(highScoreListEl);
@@ -208,26 +217,28 @@ var highScore = function() {
         topHighScoresEl.textContent = loadedHighScores[i].initial + " - " + loadedHighScores[i].score;
     }
 
+    // creates button to go back to the start page
     var goBack = document.createElement("button");
     goBack.textContent = "Go Back";
     goBack.className = "btn-back btn";
     borderEl.appendChild(goBack);
 
+    // creates button for users to clear the leaderboard
     var clearScore = document.createElement("button");
     clearScore.textContent = "Clear Score";
     clearScore.className = "btn-clear btn";
     borderEl.appendChild(clearScore);
 };
 
-// clear high score
+// function to clear high score
 var clearHighScores = function() {
     var confirmClear = window.confirm("Are you sure you want to clear the leaderboard?");
     if (confirmClear) {
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 5; i++) { // resets leaderboard to as if no one has played
             loadedHighScores[i].score = 0;
             loadedHighScores[i].initial = "??";
         }
-        localStorage.setItem("highScores", JSON.stringify(loadedHighScores));
+        localStorage.setItem("highScores", JSON.stringify(loadedHighScores)); // saves localStorage so that previous saved localStorage doesn't go back to the leaderboard after user has cleared it
         highScore();
     }
     return false;

@@ -6,7 +6,6 @@
 :root {
     --prim-color: #164a41;
     --sec-color: #f1b24a;
-    --tert-color: 
 }
 
 /* Styling that remains constant */
@@ -95,6 +94,18 @@
     color: var(--sec-color);
 }
 
+/* Result Page Styling */
+.info {
+    text-align: center;
+    font-size: 35px;
+    padding-bottom: 30px;
+}
+
+.enterInitial {
+    text-align: center;
+    font-size: 25px;
+}
+
 /* High Score Page styles */
 .leaderboard-table {
     font-size: 25px;
@@ -119,16 +130,4 @@
 
 .leaderboard:nth-child(3) {
     background-color: #cd7f32;
-}
-
-/* Result Page Styling */
-.info {
-    text-align: center;
-    font-size: 35px;
-    padding-bottom: 30px;
-}
-
-.enterInitial {
-    text-align: center;
-    font-size: 25px;
 }
