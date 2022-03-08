@@ -18,11 +18,7 @@
 
 .score {
     float: left;
-}
-
-.score a {
-    text-decoration: none;
-    color: var(--sec-color);
+    cursor: pointer;
 }
 
 .border {
