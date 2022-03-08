@@ -11,7 +11,7 @@ A code quiz game that asks users a series of questions with answer choices. Ther
 ## Website
 https://andrewyk99.github.io/code-quiz/
 
-![screenshot of website](./assets/images/code-quiz-ss.png)?raw=true "Screenshot")
+![screenshot of website](./assets/images/code-quiz-ss.png?raw=true "Screenshot")
 
 ## Contribution
 Made by Andrew Kim
