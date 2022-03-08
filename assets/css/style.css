@@ -5,20 +5,31 @@
 
 :root {
     --prim-color: #164a41;
-    --sec-color: #4d774e;
+    --sec-color: #f1b24a;
+    --tert-color: 
 }
 
 /* Styling that remains constant */
 .header {
     padding: 20px 35px;  
 }
+
 .timer {
     float: right;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .score {
     float: left;
     cursor: pointer;
+    color: var(--prim-color);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.score:hover {
+    color: var(--sec-color);
 }
 
 .border {
@@ -28,7 +39,6 @@
     text-align: center;
 }
 
-/* Intro page styling */
 .title {
     font-size: 40px;
     font-weight: bold;
@@ -36,12 +46,13 @@
     text-align: center;
 }
 
+/* Intro page styling */
 .instructions {
     font-size: 20px;
     padding-bottom: 15px;
 }
 
-.start-btn {
+.btn {
     background-color: var(--prim-color);
     border: none;
     color: white;
@@ -52,8 +63,72 @@
     font-size: 20px;
     border-radius: 10px;
     cursor: pointer;
+    margin: 10px;
 }
 
-.start-btn:hover {
+.btn:hover {
     background-color: var(--sec-color);
+}
+
+/* Question pages styling */
+.answer-choices {
+    background-color: var(--prim-color);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.answer-choices:hover {
+    background-color: var(--sec-color);
+}
+
+.results {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--sec-color);
+}
+
+/* High Score Page styles */
+.leaderboard-table {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    background-color: var(--prim-color);
+}
+
+.leaderboard {
+    padding-left: 10px;
+    border: solid black;
+} 
+
+.leaderboard:nth-child(1)  {
+    background-color: #ffd700;
+}
+
+.leaderboard:nth-child(2) {
+    background-color: #c0c0c0;
+}
+
+.leaderboard:nth-child(3) {
+    background-color: #cd7f32;
+}
+
+/* Result Page Styling */
+.info {
+    text-align: center;
+    font-size: 35px;
+    padding-bottom: 30px;
+}
+
+.enterInitial {
+    text-align: center;
+    font-size: 25px;
 }
